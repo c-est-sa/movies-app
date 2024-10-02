@@ -1,10 +1,10 @@
 import axios from "axios";
 import { API_KEY, BASE_URL } from "../config/apiConfig";
 
-const MoviesApi = async (selectedValue: string) => {
+const TVsApi = async (selectedValue: string) => {
   try {
     const res = await axios.get(
-      `${BASE_URL}/movie/${selectedValue}?language=en-US&page=1&api_key=${API_KEY}`
+      `${BASE_URL}/tv/${selectedValue}?language=en-US&page=1&api_key=${API_KEY}`
     );
     return res.data.results;
   } catch (error) {
@@ -13,4 +13,4 @@ const MoviesApi = async (selectedValue: string) => {
   }
 };
 
-export default MoviesApi
+export default TVsApi

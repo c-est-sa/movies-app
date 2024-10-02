@@ -1,10 +1,12 @@
+import TVsContainer from "@/components/containers/TVsContainer";
 import { View, Text, StyleSheet } from "react-native";
 
 export default function tvsScreen() {
   return (
-    <View style={styles.container}>
-      <Text>TV Screen</Text>
-    </View>
+    // <View style={styles.container}>
+    //   <Text>TV Screen</Text>
+    // </View>
+    <TVsContainer />
   );
 }
 
