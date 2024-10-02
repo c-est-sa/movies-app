@@ -12,54 +12,13 @@ import {
   SelectDragIndicator,
   SelectItem,
   ChevronDownIcon,
-  Image,
   Text,
   VStack,
-  FlatList,
 } from "@gluestack-ui/themed";
-import axios from "axios";
 import React, { useState } from "react";
 
-import { API_KEY, BASE_URL } from "../config/apiConfig";
 import MoviesApi from "../services/MoviesApi";
-
-const MoviesList = (props: { movies: Movie[] }) => {
-  const { movies } = props;
-  return (
-    <FlatList
-      data={movies}
-      renderItem={({ item }) => (
-        <MovieCard
-          title={item.title}
-          overview={item.overview}
-          release_date={item.release_date}
-          poster_path={item.poster_path}
-        />
-      )}
-      keyExtractor={(item) => item.id.toString()}
-    />
-  );
-};
-
-const MovieCard = (props: {
-  title: string;
-  overview: string;
-  release_date: string;
-  poster_path: string;
-}) => {
-  const { title, overview, release_date, poster_path } = props;
-  return (
-    <Center>
-      <Image
-        source={{ uri: `https://image.tmdb.org/t/p/w500${poster_path}` }}
-        alt={title}
-      />
-      <Text>{title}</Text>
-      <Text>{overview}</Text>
-      <Text>Released on: {release_date}</Text>
-    </Center>
-  );
-};
+import MoviesList from "../lists/MoviesList";
 
 interface Movie {
   id: number;
