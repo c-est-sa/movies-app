@@ -21,6 +21,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 import { API_KEY, BASE_URL } from "../config/apiConfig";
+import MoviesApi from "../services/MoviesApi";
 
 const MoviesList = (props: { movies: Movie[] }) => {
   const { movies } = props;
@@ -71,22 +72,23 @@ interface Movie {
 const MoviesContainer = () => {
   const [selectedType, setSelectedType] = useState("");
   const [moviesArray, setMoviesArray] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const callApi = async (selectedValue: string) => {
+  const fetchMovies = async (selectedValue: string) => {
+    setIsLoading(true);
     try {
-      const res = await axios.get(
-        `${BASE_URL}/movie/${selectedValue}?language=en-US&page=1&api_key=${API_KEY}`
-      );
-      setMoviesArray(res.data.results);
+      const movies = await MoviesApi(selectedValue);
+      setMoviesArray(movies);
     } catch (error) {
-      console.error(error);
-      throw error;
+      alert("Something went wrong.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleOnValueChange = (selectedValue: string) => {
     setSelectedType(selectedValue);
-    callApi(selectedValue);
+    fetchMovies(selectedValue);
   };
 
   return (
@@ -111,7 +113,12 @@ const MoviesContainer = () => {
           </SelectContent>
         </SelectPortal>
       </Select>
-      <MoviesList movies={moviesArray} />
+
+      {isLoading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <MoviesList movies={moviesArray} />
+      )}
     </VStack>
   );
 };
