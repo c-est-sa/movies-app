@@ -1,24 +1,9 @@
-import {
-  Center,
-  Select,
-  SelectTrigger,
-  SelectInput,
-  SelectIcon,
-  Icon,
-  SelectPortal,
-  SelectBackdrop,
-  SelectContent,
-  SelectDragIndicatorWrapper,
-  SelectDragIndicator,
-  SelectItem,
-  ChevronDownIcon,
-  Text,
-  VStack,
-} from "@gluestack-ui/themed";
+import { SafeAreaView, ScrollView, Text, VStack } from "@gluestack-ui/themed";
 import React, { useState } from "react";
 
 import TVsApi from "../services/TVsApi";
 import TVsList from "../lists/TVsList";
+import TVsSelectForm from "../forms/TVsSelectForm";
 
 interface TV {
   id: number;
@@ -51,30 +36,18 @@ const TVsContainer = () => {
   };
 
   return (
-    <VStack>
-      <Select selectedValue={selectedType} onValueChange={handleOnValueChange}>
-        <SelectTrigger variant="outline" size="md">
-          <SelectInput placeholder="Select" width="100%" />
-          <SelectIcon>
-            <Icon as={ChevronDownIcon} />
-          </SelectIcon>
-        </SelectTrigger>
-        <SelectPortal>
-          <SelectBackdrop />
-          <SelectContent>
-            <SelectDragIndicatorWrapper>
-              <SelectDragIndicator />
-            </SelectDragIndicatorWrapper>
-            <SelectItem label="Airing Today" value="airing_today" />
-            <SelectItem label="On the Air" value="on_the_air" />
-            <SelectItem label="Popular" value="popular" />
-            <SelectItem label="Top Rated" value="top_rated" />
-          </SelectContent>
-        </SelectPortal>
-      </Select>
+    <SafeAreaView>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <VStack>
+          <TVsSelectForm
+            selectedType={selectedType}
+            handleOnValueChange={handleOnValueChange}
+          />
 
-      {isLoading ? <Text>Loading...</Text> : <TVsList TVs={TVsArray} />}
-    </VStack>
+          {isLoading ? <Text>Loading...</Text> : <TVsList TVs={TVsArray} />}
+        </VStack>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

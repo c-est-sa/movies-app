@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Center,
   Select,
   SelectTrigger,
   SelectInput,
@@ -12,19 +13,21 @@ import {
   SelectDragIndicator,
   SelectItem,
   ChevronDownIcon,
+  Text,
+  VStack,
+  Box,
   FormControl,
   FormControlLabel,
   FormControlLabelText,
-  Box,
 } from "@gluestack-ui/themed";
 
-const MoviesSelectForm = (props) => {
+const TVsSelectForm = (props) => {
   const { selectedType, handleOnValueChange } = props;
   return (
     <Box p="$4">
       <FormControl>
         <FormControlLabel mb="$1">
-          <FormControlLabelText>Movie Search Type</FormControlLabelText>
+          <FormControlLabelText>TV Search Type</FormControlLabelText>
         </FormControlLabel>
         <Select
           selectedValue={selectedType}
@@ -42,10 +45,10 @@ const MoviesSelectForm = (props) => {
               <SelectDragIndicatorWrapper>
                 <SelectDragIndicator />
               </SelectDragIndicatorWrapper>
-              <SelectItem label="Now Playing" value="now_playing" />
+              <SelectItem label="Airing Today" value="airing_today" />
+              <SelectItem label="On the Air" value="on_the_air" />
               <SelectItem label="Popular" value="popular" />
               <SelectItem label="Top Rated" value="top_rated" />
-              <SelectItem label="Upcoming" value="upcoming" />
             </SelectContent>
           </SelectPortal>
         </Select>
@@ -54,4 +57,4 @@ const MoviesSelectForm = (props) => {
   );
 };
 
-export default MoviesSelectForm;
+export default TVsSelectForm;

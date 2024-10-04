@@ -1,22 +1,4 @@
-import {
-  Center,
-  Select,
-  SelectTrigger,
-  SelectInput,
-  SelectIcon,
-  Icon,
-  SelectPortal,
-  SelectBackdrop,
-  SelectContent,
-  SelectDragIndicatorWrapper,
-  SelectDragIndicator,
-  SelectItem,
-  ChevronDownIcon,
-  Text,
-  VStack,
-  SafeAreaView,
-  ScrollView,
-} from "@gluestack-ui/themed";
+import { Text, VStack, SafeAreaView, ScrollView } from "@gluestack-ui/themed";
 import React, { useState } from "react";
 
 import MoviesApi from "../services/MoviesApi";

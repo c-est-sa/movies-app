@@ -22,6 +22,7 @@ const TVsList: FC<TVsListProps> = (props) => {
       data={TVs}
       renderItem={({ item }) => (
         <TVsListItem
+          id={(item as TV).id}
           name={(item as TV).name}
           overview={(item as TV).overview}
           first_air_date={(item as TV).first_air_date}
@@ -29,6 +30,7 @@ const TVsList: FC<TVsListProps> = (props) => {
         />
       )}
       keyExtractor={(item) => (item as TV).id.toString()}
+      scrollEnabled={false}
     />
   );
 };
