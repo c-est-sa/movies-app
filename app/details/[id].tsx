@@ -100,6 +100,10 @@ const detailScreen = () => {
                 <Text>{detail.release_date}</Text>
               </HStack>
               <HStack space="sm">
+                <Text fontWeight="bold">Popularity:</Text>
+                <Text>{detail.popularity}</Text>
+              </HStack>
+              <HStack space="sm">
                 <Text fontWeight="bold">Runtime:</Text>
                 <Text>{detail.runtime} minutes</Text>
               </HStack>
@@ -119,6 +123,10 @@ const detailScreen = () => {
               <HStack space="sm">
                 <Text fontWeight="bold">First Air Date:</Text>
                 <Text>{detail.first_air_date}</Text>
+              </HStack>
+              <HStack space="sm">
+                <Text fontWeight="bold">Popularity:</Text>
+                <Text>{detail.popularity}</Text>
               </HStack>
               <HStack space="sm">
                 <Text fontWeight="bold">Seasons:</Text>
