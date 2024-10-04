@@ -13,4 +13,4 @@ const TVsApi = async (selectedValue: string) => {
   }
 };
 
-export default TVsApi
+export default TVsApi;

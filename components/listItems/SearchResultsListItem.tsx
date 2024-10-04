@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import {
   Badge,
+  Box,
   Button,
   ButtonText,
   Center,
@@ -83,51 +84,75 @@ const SearchResultsListItem: FC<SearchResultsListItemProps> = (props) => {
     if (props.media_type === "movie") {
       return (
         <>
-          <Badge size="md" variant="solid" borderRadius="$none" action="info">
+          <Badge
+            size="md"
+            variant="solid"
+            borderRadius="$none"
+            action="info"
+            mb="$1"
+          >
             <BadgeText>{props.media_type}</BadgeText>
           </Badge>
-          <Text>{props.title}</Text>
+          <Text fontSize="$lg" fontWeight="$bold">
+            {props.title}
+          </Text>
           {props.release_date && (
-            <Text>Release Date: {props.release_date}</Text>
+            <Text fontSize="$sm">Release Date: {props.release_date}</Text>
           )}
         </>
       );
     } else if (props.media_type === "tv") {
       return (
         <>
-          <Badge size="md" variant="solid" borderRadius="$none" action="info">
+          <Badge
+            size="md"
+            variant="solid"
+            borderRadius="$none"
+            action="info"
+            mb="$1"
+          >
             <BadgeText>{props.media_type}</BadgeText>
           </Badge>
-          <Text>{props.name}</Text>
+          <Text fontSize="$lg" fontWeight="$bold">
+            {props.name}
+          </Text>
           {props.first_air_date && (
-            <Text>First Air Date: {props.first_air_date}</Text>
+            <Text fontSize="$sm">First Air Date: {props.first_air_date}</Text>
           )}
         </>
       );
     } else if (props.media_type === "person") {
       return (
         <>
-          <Badge size="md" variant="solid" borderRadius="$none" action="info">
+          <Badge
+            size="md"
+            variant="solid"
+            borderRadius="$none"
+            action="info"
+            mb="$1"
+          >
             <BadgeText>{props.media_type}</BadgeText>
           </Badge>
-          <Text>{props.name}</Text>
+          <Text fontSize="$lg" fontWeight="$bold">
+            {props.name}
+          </Text>
         </>
       );
     }
   };
 
   return (
-    <Center>
-      <HStack>
+    <Box my="$2" mx="$4">
+      <HStack space="md" p="$4">
         {renderImage()}
-        <VStack>
+        <VStack flex={1} space="xs">
           {renderContent()}
-          <Button onPress={handleMoreDetails}>
+          <Button onPress={handleMoreDetails} size="sm" mt="$2">
             <ButtonText>more details</ButtonText>
           </Button>
         </VStack>
       </HStack>
-    </Center>
+    </Box>
   );
 };
 

@@ -53,15 +53,25 @@ const SearchContainer = () => {
             handleOnPress={handleOnPress}
           />
 
+          {!selectedType && (
+            <Center>
+              <Text textAlign="center">
+                Specify a search query and a search type, and start searching!
+              </Text>
+            </Center>
+          )}
+
           {isLoading ? (
             <Center>
               <Text>Loading...</Text>
             </Center>
           ) : (
-            <SearchResultsList
-              searchType={selectedTypeToPass}
-              results={resultsArray}
-            />
+            selectedType && (
+              <SearchResultsList
+                searchType={selectedTypeToPass}
+                results={resultsArray}
+              />
+            )
           )}
         </VStack>
       </ScrollView>

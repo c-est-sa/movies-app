@@ -13,4 +13,4 @@ const MoviesApi = async (selectedValue: string) => {
   }
 };
 
-export default MoviesApi
+export default MoviesApi;
