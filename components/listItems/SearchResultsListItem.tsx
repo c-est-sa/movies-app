@@ -10,6 +10,7 @@ import {
   VStack,
 } from "@gluestack-ui/themed";
 import { BadgeText } from "@gluestack-ui/themed";
+import { useRouter } from "expo-router";
 
 interface Result {
   id: number;
@@ -41,6 +42,14 @@ interface ResultTV extends Result {
 type SearchResultsListItemProps = ResultMovie | ResultPerson | ResultTV;
 
 const SearchResultsListItem: FC<SearchResultsListItemProps> = (props) => {
+  const router = useRouter();
+  const handleMoreDetails = () => {
+    router.push({
+      pathname: "/details/[id]",
+      params: { id: props.id, media_type: props.media_type },
+    });
+  };
+
   const renderImage = () => {
     const imageUrl =
       props.media_type === "person" ? props.profile_path : props.poster_path;
@@ -113,7 +122,7 @@ const SearchResultsListItem: FC<SearchResultsListItemProps> = (props) => {
         {renderImage()}
         <VStack>
           {renderContent()}
-          <Button>
+          <Button onPress={handleMoreDetails}>
             <ButtonText>more details</ButtonText>
           </Button>
         </VStack>

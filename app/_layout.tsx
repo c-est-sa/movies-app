@@ -43,10 +43,8 @@ export default function RootLayout() {
           <StatusBar style="auto" />
 
           <Stack>
-            {/* <Stack.Screen name="(tabs)" options={{ headerShown: true }} /> */}
-            <Stack.Screen name="moviesScreen" options={{ headerShown: true }} />
-            <Stack.Screen name="searchScreen" options={{ headerShown: true }} />
-            <Stack.Screen name="tvsScreen" options={{ headerShown: true }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="details/[id]" options={{ headerShown: true }} />
             <Stack.Screen name="+not-found" />
           </Stack>
         </ThemeProvider>
