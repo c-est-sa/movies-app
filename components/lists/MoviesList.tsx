@@ -9,6 +9,7 @@ interface Movie {
   overview: string;
   poster_path: string;
   release_date: string;
+  popularity: number;
 }
 
 interface MoviesListProps {
@@ -27,6 +28,7 @@ const MoviesList: FC<MoviesListProps> = (props) => {
           overview={(item as Movie).overview}
           release_date={(item as Movie).release_date}
           poster_path={(item as Movie).poster_path}
+          popularity={(item as Movie).popularity}
         />
       )}
       keyExtractor={(item) => (item as Movie).id.toString()}

@@ -20,6 +20,7 @@ interface ResultMovie extends Result {
   overview: string;
   poster_path: string;
   release_date: string;
+  popularity: number;
 }
 
 interface ResultPerson extends Result {
@@ -34,6 +35,7 @@ interface ResultTV extends Result {
   overview: string;
   poster_path: string;
   first_air_date: string;
+  popularity: number;
 }
 
 interface SearchResultsListProps {
@@ -55,6 +57,7 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
           overview={result.overview}
           release_date={result.release_date}
           poster_path={result.poster_path}
+          popularity={result.popularity}
         />
       );
     } else if (searchType === "tv") {
@@ -67,6 +70,7 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
           overview={result.overview}
           first_air_date={result.first_air_date}
           poster_path={result.poster_path}
+          popularity={result.popularity}
         />
       );
     } else if (searchType === "multi") {
@@ -80,6 +84,7 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
             overview={(result as ResultMovie).overview}
             release_date={(result as ResultMovie).release_date}
             poster_path={(result as ResultMovie).poster_path}
+            popularity={(result as ResultMovie).popularity}
           />
         );
       } else if (result.media_type === "person") {
@@ -100,6 +105,7 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
             overview={(result as ResultTV).overview}
             first_air_date={(result as ResultTV).first_air_date}
             poster_path={(result as ResultTV).poster_path}
+            popularity={(result as ResultTV).popularity}
           />
         );
       }

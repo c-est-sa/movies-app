@@ -24,6 +24,7 @@ interface ResultMovie extends Result {
   overview: string;
   poster_path: string;
   release_date: string;
+  popularity: number;
 }
 
 interface ResultPerson extends Result {
@@ -38,6 +39,7 @@ interface ResultTV extends Result {
   overview: string;
   poster_path: string;
   first_air_date: string;
+  popularity: number;
 }
 
 type SearchResultsListItemProps = ResultMovie | ResultPerson | ResultTV;
@@ -99,6 +101,9 @@ const SearchResultsListItem: FC<SearchResultsListItemProps> = (props) => {
           {props.release_date && (
             <Text fontSize="$sm">Release Date: {props.release_date}</Text>
           )}
+          {props.popularity && (
+            <Text fontSize="$sm">Popularity: {props.popularity}</Text>
+          )}
         </>
       );
     } else if (props.media_type === "tv") {
@@ -118,6 +123,9 @@ const SearchResultsListItem: FC<SearchResultsListItemProps> = (props) => {
           </Text>
           {props.first_air_date && (
             <Text fontSize="$sm">First Air Date: {props.first_air_date}</Text>
+          )}
+          {props.popularity && (
+            <Text fontSize="$sm">Popularity: {props.popularity}</Text>
           )}
         </>
       );

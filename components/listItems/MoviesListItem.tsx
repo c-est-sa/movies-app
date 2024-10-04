@@ -17,8 +17,9 @@ const MoviesListItem = (props: {
   overview: string;
   release_date: string;
   poster_path: string;
+  popularity: number;
 }) => {
-  const { title, overview, release_date, poster_path } = props;
+  const { title, overview, release_date, poster_path, popularity } = props;
 
   const router = useRouter();
   const handleMoreDetails = () => {
@@ -48,6 +49,7 @@ const MoviesListItem = (props: {
           {release_date && (
             <Text fontSize="$sm">Release Date: {release_date}</Text>
           )}
+          {popularity && <Text fontSize="$sm">Popularity: {popularity}</Text>}
           <Button onPress={handleMoreDetails} size="sm" mt="$2">
             <ButtonText>more details</ButtonText>
           </Button>

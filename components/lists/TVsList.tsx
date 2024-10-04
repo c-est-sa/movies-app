@@ -9,6 +9,7 @@ interface TV {
   overview: string;
   poster_path: string;
   first_air_date: string;
+  popularity: number;
 }
 
 interface TVsListProps {
@@ -27,6 +28,7 @@ const TVsList: FC<TVsListProps> = (props) => {
           overview={(item as TV).overview}
           first_air_date={(item as TV).first_air_date}
           poster_path={(item as TV).poster_path}
+          popularity={(item as TV).popularity}
         />
       )}
       keyExtractor={(item) => (item as TV).id.toString()}

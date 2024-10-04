@@ -17,8 +17,9 @@ const TVsListItem = (props: {
   overview: string;
   first_air_date: string;
   poster_path: string;
+  popularity: number;
 }) => {
-  const { name, overview, first_air_date, poster_path } = props;
+  const { name, overview, first_air_date, poster_path, popularity } = props;
 
   const router = useRouter();
   const handleMoreDetails = () => {
@@ -48,6 +49,7 @@ const TVsListItem = (props: {
           {first_air_date && (
             <Text fontSize="$sm">First Air Date: {first_air_date}</Text>
           )}
+          {popularity && <Text fontSize="$sm">Popularity: {popularity}</Text>}
           <Button onPress={handleMoreDetails} size="sm" mt="$2">
             <ButtonText>more details</ButtonText>
           </Button>
