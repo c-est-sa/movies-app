@@ -12,8 +12,8 @@ const SearchApi = async (props: SearchApiProps) => {
     const res = await axios.get(
       `${BASE_URL}/search/${type}?language=en-US&page=1&query=${query}&api_key=${API_KEY}&page=1`
     );
-    const limitedResults = res.data.results.slice(0, 10);
-    return limitedResults;
+    // const limitedResults = res.data.results.slice(0, 10);
+    return res.data.results;
   } catch (error) {
     console.error(error);
     throw error;
