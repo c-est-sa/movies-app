@@ -16,6 +16,7 @@ const SearchContainer = () => {
   >("movie");
   const [resultsArray, setResultsArray] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isBeforeSearch, setIsBeforeSearch] = useState(true);
 
   const fetchResults = useCallback(
     async (query: string, type: "movie" | "multi" | "tv") => {
@@ -34,6 +35,7 @@ const SearchContainer = () => {
 
   const handleOnPress = async () => {
     if (selectedType) {
+      setIsBeforeSearch(false);
       setSelectedTypeToPass(selectedType);
       fetchResults(searchQuery, selectedType);
     } else {
@@ -53,7 +55,7 @@ const SearchContainer = () => {
             handleOnPress={handleOnPress}
           />
 
-          {!selectedType && (
+          {isBeforeSearch && (
             <Center>
               <Text textAlign="center">
                 Specify a search query and a search type, and start searching!
@@ -66,7 +68,7 @@ const SearchContainer = () => {
               <Text>Loading...</Text>
             </Center>
           ) : (
-            selectedType && (
+            !isBeforeSearch && (
               <SearchResultsList
                 searchType={selectedTypeToPass}
                 results={resultsArray}
