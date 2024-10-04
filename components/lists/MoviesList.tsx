@@ -22,6 +22,7 @@ const MoviesList: FC<MoviesListProps> = (props) => {
       data={movies}
       renderItem={({ item }) => (
         <MoviesListItem
+          id={(item as Movie).id}
           title={(item as Movie).title}
           overview={(item as Movie).overview}
           release_date={(item as Movie).release_date}
@@ -29,6 +30,7 @@ const MoviesList: FC<MoviesListProps> = (props) => {
         />
       )}
       keyExtractor={(item) => (item as Movie).id.toString()}
+      scrollEnabled={false}
     />
   );
 };

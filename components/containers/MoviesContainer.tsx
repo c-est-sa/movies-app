@@ -14,11 +14,14 @@ import {
   ChevronDownIcon,
   Text,
   VStack,
+  SafeAreaView,
+  ScrollView,
 } from "@gluestack-ui/themed";
 import React, { useState } from "react";
 
 import MoviesApi from "../services/MoviesApi";
 import MoviesList from "../lists/MoviesList";
+import MoviesSelectForm from "../forms/MoviesSelectForm";
 
 interface Movie {
   id: number;
@@ -51,34 +54,22 @@ const MoviesContainer = () => {
   };
 
   return (
-    <VStack>
-      <Select selectedValue={selectedType} onValueChange={handleOnValueChange}>
-        <SelectTrigger variant="outline" size="md">
-          <SelectInput placeholder="Select" width="100%" />
-          <SelectIcon>
-            <Icon as={ChevronDownIcon} />
-          </SelectIcon>
-        </SelectTrigger>
-        <SelectPortal>
-          <SelectBackdrop />
-          <SelectContent>
-            <SelectDragIndicatorWrapper>
-              <SelectDragIndicator />
-            </SelectDragIndicatorWrapper>
-            <SelectItem label="Now Playing" value="now_playing" />
-            <SelectItem label="Popular" value="popular" />
-            <SelectItem label="Top Rated" value="top_rated" />
-            <SelectItem label="Upcoming" value="upcoming" />
-          </SelectContent>
-        </SelectPortal>
-      </Select>
+    <SafeAreaView>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <VStack>
+          <MoviesSelectForm
+            selectedType={selectedType}
+            handleOnValueChange={handleOnValueChange}
+          />
 
-      {isLoading ? (
-        <Text>Loading...</Text>
-      ) : (
-        <MoviesList movies={moviesArray} />
-      )}
-    </VStack>
+          {isLoading ? (
+            <Text>Loading...</Text>
+          ) : (
+            <MoviesList movies={moviesArray} />
+          )}
+        </VStack>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
