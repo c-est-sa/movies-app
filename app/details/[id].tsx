@@ -15,7 +15,6 @@ const detailScreen = () => {
     setIsLoading(true);
     try {
       const detail = await DetailApi(id, type);
-      console.log("Fetched Detail:", detail);
       setDetail(detail);
     } catch (error) {
       alert("Something went wrong.");
@@ -25,8 +24,6 @@ const detailScreen = () => {
   };
 
   useEffect(() => {
-    console.log("ID:", id);
-    console.log("Media Type:", media_type);
     fetchDetail(Number(id), media_type as "movie" | "tv" | "person");
   }, [id, media_type]);
 
