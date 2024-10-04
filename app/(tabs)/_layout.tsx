@@ -16,40 +16,23 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="moviesScreen"
+        name="index"
+        redirect={true}
         options={{
-          title: "Movies",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
+          href: null,
         }}
+      />
+      <Tabs.Screen
+        name="moviesScreen"
+        options={{ title: "Movies", headerShown: true }}
       />
       <Tabs.Screen
         name="searchScreen"
-        options={{
-          title: "Search",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
-            />
-          ),
-        }}
+        options={{ title: "Search", headerShown: true }}
       />
       <Tabs.Screen
         name="tvsScreen"
-        options={{
-          title: "TVs",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
-            />
-          ),
-        }}
+        options={{ title: "TVs", headerShown: true }}
       />
     </Tabs>
   );
