@@ -1,4 +1,10 @@
-import { Text, VStack, SafeAreaView, ScrollView } from "@gluestack-ui/themed";
+import {
+  Text,
+  VStack,
+  SafeAreaView,
+  ScrollView,
+  Center,
+} from "@gluestack-ui/themed";
 import React, { useState } from "react";
 
 import MoviesApi from "../services/MoviesApi";
@@ -45,7 +51,9 @@ const MoviesContainer = () => {
           />
 
           {isLoading ? (
-            <Text>Loading...</Text>
+            <Center>
+              <Text>Loading...</Text>
+            </Center>
           ) : (
             <MoviesList movies={moviesArray} />
           )}

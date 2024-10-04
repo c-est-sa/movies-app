@@ -1,4 +1,10 @@
-import { SafeAreaView, ScrollView, Text, VStack } from "@gluestack-ui/themed";
+import {
+  Center,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  VStack,
+} from "@gluestack-ui/themed";
 import React, { useState } from "react";
 
 import TVsApi from "../services/TVsApi";
@@ -44,7 +50,13 @@ const TVsContainer = () => {
             handleOnValueChange={handleOnValueChange}
           />
 
-          {isLoading ? <Text>Loading...</Text> : <TVsList TVs={TVsArray} />}
+          {isLoading ? (
+            <Center>
+              <Text>Loading...</Text>
+            </Center>
+          ) : (
+            <TVsList TVs={TVsArray} />
+          )}
         </VStack>
       </ScrollView>
     </SafeAreaView>
