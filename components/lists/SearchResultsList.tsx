@@ -1,5 +1,11 @@
 import React, { FC } from "react";
-import { Center, FlatList, Text } from "@gluestack-ui/themed";
+import {
+  Center,
+  FlatList,
+  SafeAreaView,
+  Text,
+  View,
+} from "@gluestack-ui/themed";
 
 import SearchResultsListItem from "../listItems/SearchResultsListItem";
 
@@ -43,6 +49,8 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
       const result = item as ResultMovie;
       return (
         <SearchResultsListItem
+          id={result.id}
+          media_type="movie"
           title={result.title}
           overview={result.overview}
           release_date={result.release_date}
@@ -53,6 +61,8 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
       const result = item as ResultTV;
       return (
         <SearchResultsListItem
+          id={result.id}
+          media_type="tv"
           name={result.name}
           overview={result.overview}
           first_air_date={result.first_air_date}
@@ -64,6 +74,8 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
       if (result.media_type === "movie") {
         return (
           <SearchResultsListItem
+            id={(result as ResultMovie).id}
+            media_type="movie"
             title={(result as ResultMovie).title}
             overview={(result as ResultMovie).overview}
             release_date={(result as ResultMovie).release_date}
@@ -73,6 +85,8 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
       } else if (result.media_type === "person") {
         return (
           <SearchResultsListItem
+            id={(result as ResultPerson).id}
+            media_type="person"
             name={(result as ResultPerson).name}
             profile_path={(result as ResultPerson).profile_path}
           />
@@ -80,6 +94,8 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
       } else if (result.media_type === "tv") {
         return (
           <SearchResultsListItem
+            id={(result as ResultTV).id}
+            media_type="tv"
             name={(result as ResultTV).name}
             overview={(result as ResultTV).overview}
             first_air_date={(result as ResultTV).first_air_date}
@@ -90,16 +106,21 @@ const SearchResultsList: FC<SearchResultsListProps> = (props) => {
     }
   };
 
-  return results.length === 0 ? (
-    <Center>
-      <Text>No Result... Try something else!</Text>
-    </Center>
-  ) : (
-    <FlatList
-      data={results}
-      renderItem={renderItemFn}
-      keyExtractor={(item) => (item as Result).id.toString()}
-    />
+  return (
+    <SafeAreaView>
+      {results.length === 0 ? (
+        <Center>
+          <Text>No Result... Try something else!</Text>
+        </Center>
+      ) : (
+        <FlatList
+          data={results}
+          renderItem={renderItemFn}
+          keyExtractor={(item) => (item as Result).id.toString()}
+          scrollEnabled={false}
+        />
+      )}
+    </SafeAreaView>
   );
 };
 

@@ -1,12 +1,12 @@
 import SearchContainer from "@/components/containers/SearchContainer";
+import { SafeAreaView } from "@gluestack-ui/themed";
 import { View, Text, StyleSheet } from "react-native";
 
 export default function searchScreen() {
   return (
-    // <View style={styles.container}>
-    //   <Text>Search screen</Text>
-    // </View>
-    <SearchContainer />
+    <SafeAreaView flex={1}>
+      <SearchContainer />
+    </SafeAreaView>
   );
 }
 
