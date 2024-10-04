@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { FlatList } from "@gluestack-ui/themed";
 
 import TVsListItem from "../listItems/TVsListItem";
@@ -11,20 +11,24 @@ interface TV {
   first_air_date: string;
 }
 
-const TVsList = (props: { TVs: TV[] }) => {
+interface TVResultsListProps {
+  TVs: TV[];
+}
+
+const TVsList: FC<TVResultsListProps> = (props) => {
   const { TVs } = props;
   return (
     <FlatList
       data={TVs}
       renderItem={({ item }) => (
         <TVsListItem
-          name={item.name}
-          overview={item.overview}
-          first_air_date={item.first_air_date}
-          poster_path={item.poster_path}
+          name={(item as TV).name}
+          overview={(item as TV).overview}
+          first_air_date={(item as TV).first_air_date}
+          poster_path={(item as TV).poster_path}
         />
       )}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => (item as TV).id.toString()}
     />
   );
 };

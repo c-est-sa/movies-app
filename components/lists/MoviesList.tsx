@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { FlatList } from "@gluestack-ui/themed";
 
 import MoviesListItem from "../listItems/MoviesListItem";
@@ -11,20 +11,24 @@ interface Movie {
   release_date: string;
 }
 
-const MoviesList = (props: { movies: Movie[] }) => {
+interface MovieResultsListProps {
+  movies: Movie[];
+}
+
+const MoviesList: FC<MovieResultsListProps> = (props) => {
   const { movies } = props;
   return (
     <FlatList
       data={movies}
       renderItem={({ item }) => (
         <MoviesListItem
-          title={item.title}
-          overview={item.overview}
-          release_date={item.release_date}
-          poster_path={item.poster_path}
+          title={(item as Movie).title}
+          overview={(item as Movie).overview}
+          release_date={(item as Movie).release_date}
+          poster_path={(item as Movie).poster_path}
         />
       )}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => (item as Movie).id.toString()}
     />
   );
 };
