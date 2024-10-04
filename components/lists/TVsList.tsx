@@ -11,11 +11,11 @@ interface TV {
   first_air_date: string;
 }
 
-interface TVResultsListProps {
+interface TVsListProps {
   TVs: TV[];
 }
 
-const TVsList: FC<TVResultsListProps> = (props) => {
+const TVsList: FC<TVsListProps> = (props) => {
   const { TVs } = props;
   return (
     <FlatList

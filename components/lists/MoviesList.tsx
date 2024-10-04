@@ -11,11 +11,11 @@ interface Movie {
   release_date: string;
 }
 
-interface MovieResultsListProps {
+interface MoviesListProps {
   movies: Movie[];
 }
 
-const MoviesList: FC<MovieResultsListProps> = (props) => {
+const MoviesList: FC<MoviesListProps> = (props) => {
   const { movies } = props;
   return (
     <FlatList
